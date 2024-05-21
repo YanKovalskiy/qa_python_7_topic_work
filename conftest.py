@@ -3,6 +3,7 @@ import random
 import string
 
 from faker import Faker
+from datetime import datetime, timedelta
 
 from endpoints.courier_endpoints import CourierEndpoints
 from endpoints.order_endpoints import OrderEndpoints
@@ -11,7 +12,7 @@ from endpoints.order_endpoints import OrderEndpoints
 def generate_payload():
     def generate_random_string(length):
         letters = string.ascii_lowercase
-        random_string = ''.join(random.choice(letters) for i in range(length))
+        random_string = ''.join(random.choice(letters) for _ in range(length))
         return random_string
 
     login = generate_random_string(10)
@@ -34,7 +35,7 @@ def courier_endpoints():
 
 @pytest.fixture()
 def order_endpoints():
-    return  OrderEndpoints()
+    return OrderEndpoints()
 
 
 def delete_courier_data(payload):
@@ -76,7 +77,7 @@ def payload_to_order():
         "metroStation": 4,
         "phone": fake.phone_number(),
         "rentTime": 5,
-        "deliveryDate": "2020-06-06",
+        "deliveryDate": str(datetime.now() + timedelta(days=1))[:10],
         "comment": "Комментарий курьеру",
         "color": []
     }
