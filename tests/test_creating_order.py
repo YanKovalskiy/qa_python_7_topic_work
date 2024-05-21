@@ -15,3 +15,8 @@ class TestOrder:
         order_endpoints.create_order(payload_to_order)
         order_endpoints.check_status_code_is_(201)
         order_endpoints.check_in_response_text_is_text('track')
+
+    def test_get_list_orders(self, order_endpoints):
+        order_endpoints.get_list_orders()
+        order_endpoints.check_status_code_is_(200)
+        order_endpoints.check_in_response_text_is_text('orders')
