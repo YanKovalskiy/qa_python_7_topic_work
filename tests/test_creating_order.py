@@ -16,6 +16,7 @@ class TestOrder:
         order_endpoints.check_status_code_is_(201)
         order_endpoints.check_in_response_text_is_text('track')
 
+    @allure.title('Получение списка заказов')
     def test_get_list_orders(self, order_endpoints):
         order_endpoints.get_list_orders()
         order_endpoints.check_status_code_is_(200)
