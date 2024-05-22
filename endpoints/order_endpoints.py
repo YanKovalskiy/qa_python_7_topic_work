@@ -16,5 +16,6 @@ class OrderEndpoints(Endpoint):
             self.response = requests.get(f'{URL}/api/v1/orders')
 
     def check_response_get_orders_is_list(self):
-        dict_response = self.response.json()
-        assert isinstance(dict_response['orders'], list)
+        with allure.step(f'Проверяем является ли ответ списком'):
+            dict_response = self.response.json()
+            assert isinstance(dict_response['orders'], list)
