@@ -15,7 +15,7 @@ class TestLoginCourier:
         ('login', 'password')
     )
     def test_login_without_required_field(self, payload_to_login, courier_endpoints, required_field):
-        del payload_to_login[required_field]
+        payload_to_login[required_field] = ''
         courier_endpoints.login_courier(payload_to_login)
         courier_endpoints.check_status_code_is_(400)
         courier_endpoints.check_response_message_is_('Недостаточно данных для входа')
