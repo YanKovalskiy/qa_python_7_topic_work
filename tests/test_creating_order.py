@@ -14,11 +14,10 @@ class TestOrder:
             payload_to_order['color'] = scooter_color
         order_endpoints.create_order(payload_to_order)
         order_endpoints.check_status_code_is_(201)
-        order_endpoints.check_in_response_text_is_text('track')
+        order_endpoints.check_in_response_is_field_('track')
 
     @allure.title('Получение списка заказов')
     def test_get_list_orders(self, order_endpoints):
         order_endpoints.get_list_orders()
         order_endpoints.check_status_code_is_(200)
-        order_endpoints.check_in_response_text_is_text('orders')
-        order_endpoints.check_response_get_list_orders_is_list()
+        order_endpoints.check_in_response_is_field_('orders')

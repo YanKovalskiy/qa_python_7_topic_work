@@ -16,6 +16,6 @@ class Endpoint:
         with allure.step('Проверяем сообщение из ответа'):
             assert self.response.json()['message'] == response_text
 
-    def check_in_response_text_is_text(self, text):
-        with allure.step(f'Проверяем есть ли текст - {text} в ответе'):
-            assert text in self.response.text
+    def check_in_response_is_field_(self, field):
+        with allure.step(f'Проверяем есть ли в ответе поле - {field}'):
+            assert field in self.response.json()

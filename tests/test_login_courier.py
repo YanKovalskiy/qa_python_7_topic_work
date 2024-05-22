@@ -7,7 +7,7 @@ class TestLoginCourier:
     def test_login_courier_positive_scenario(self, payload_to_login, courier_endpoints):
         courier_endpoints.login_courier(payload_to_login)
         courier_endpoints.check_status_code_is_(200)
-        courier_endpoints.check_in_response_text_is_text('id')
+        courier_endpoints.check_in_response_is_field_('id')
 
     @allure.title('Вход в систему зарегистрированного курьера без заполнения одного из обязательных полей')
     @pytest.mark.parametrize(
