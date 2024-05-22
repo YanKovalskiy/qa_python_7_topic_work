@@ -20,4 +20,4 @@ class TestOrder:
         order_endpoints.get_list_orders()
         order_endpoints.check_status_code_is_(200)
         order_endpoints.check_in_response_text_is_text('orders')
-        order_endpoints.check_response_get_orders_is_list()
+        order_endpoints.check_response_get_list_orders_is_list()
